@@ -46,10 +46,6 @@ enum DiaSemana {
 }
 let hoy: DiaSemana = DiaSemana.Miercoles;
 
-// Any (cualquier tipo - evitar usar cuando sea posible)
-let cualquierValor: any = 4;
-cualquierValor = "ahora soy string";
-
 // Void (ausencia de valor, usado en funciones que no retornan valor)
 function saludar(): void {
     console.log("Hola");
@@ -59,7 +55,7 @@ function saludar(): void {
 let nulo: null = null;
 let indefinido: undefined = undefined;
 
-// Never (funciones que nunca retornan o siempre lanzan excepciones)
+// Never (funciones que nunca retornan o siempre lanzan excepciones) - Una función con tipo never nunca termina su ejecución o siempre lanza un error.
 function error(mensaje: string): never {
     throw new Error(mensaje);
 }
@@ -72,26 +68,8 @@ let textoDesconocido: any = "esto es un string";
 let longitudTexto: number = (textoDesconocido as string).length;
 let otraForma: number = (<string>textoDesconocido).length; // Sintaxis alternativa
 
-// -------------- 3. INTERFACES --------------
 
-// Interfaces definen la estructura que debe tener un objeto
-interface Persona {
-    nombre: string;
-    edad: number;
-    direccion?: string;  // El signo ? indica que es opcional
-    saludar(): void;     // Método
-}
-
-// Usar la interfaz
-const empleado: Persona = {
-    nombre: "Roberto",
-    edad: 35,
-    saludar() {
-        console.log(`Hola, soy ${this.nombre}`);
-    }
-};
-
-// -------------- 4. FUNCIONES --------------
+// -------------- 3. FUNCIONES --------------
 
 // Función con parámetros y retorno tipados
 function sumar(a: number, b: number): number {
@@ -112,7 +90,7 @@ function saludarPersona(nombre: string, saludo: string = "Hola"): string {
     return `${saludo}, ${nombre}!`;
 }
 
-// Parámetros REST
+// Parámetros REST - 'numeros' seria un array indefinido de argumentos. 
 function sumarTodos(...numeros: number[]): number {
     return numeros.reduce((total, num) => total + num, 0);
 }
